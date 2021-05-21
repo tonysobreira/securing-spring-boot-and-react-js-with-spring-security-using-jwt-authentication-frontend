@@ -14,6 +14,9 @@ class login extends Component {
       username: "admin",
       password: "admin"
     };
+
+    this.handleChangeUsername = this.handleChangeUsername.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
@@ -46,27 +49,37 @@ class login extends Component {
     });
   }
 
+  handleChangeUsername(event) {
+    this.setState({username: event.target.value});
+  }
+
+  handleChangePassword = event => {
+    this.setState({password: event.target.value});
+  }
+
   render() {
     return (
       <div>
-        <div class="wrapper">
-          <form class="form-signin" onSubmit={this.handleFormSubmit}>
-            <h2 class="form-signin-heading">Please login</h2>
+        <div className="wrapper">
+          <form className="form-signin" onSubmit={this.handleFormSubmit}>
+            <h2 className="form-signin-heading">Please login</h2>
             <div className="form-group">
               <input type="text"
-                class="form-control"
-                placeholder="User name"
-                value="admin"
+                className="form-control"
+                placeholder="username"
+                value={this.state.username}
+                onChange={this.handleChangeUsername}
               />
             </div>
             <div className="form-group">
               <input type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="password"
-                value="admin"
+                value={this.state.password}
+                onChange={this.handleChangePassword}
               />
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
+            <button className="btn btn-lg btn-primary btn-block" type="submit">
               Login
             </button>
           </form>
